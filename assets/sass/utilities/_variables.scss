@@ -1,0 +1,20 @@
+//colors
+$colors: (
+  background-clr: #dff6ff,
+  title-clr: #7f8487,
+  day-bg: #ac66cc,
+  white: #fff,
+  border-clr: #ccc,
+  btn-bg: #4d77ff
+);
+
+//breakpoints
+$devices: (
+  desktop-large: 1366px,
+  desktop-small: 1280px,
+  ipad-pro: 1024px,
+  ipad-mini: 995px,
+  tablet: 768px,
+  mobile: 540px,
+  mobile-small: 480px,
+);

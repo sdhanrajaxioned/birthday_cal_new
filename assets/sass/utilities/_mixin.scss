@@ -1,0 +1,158 @@
+// Flexbox display
+@mixin flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+//flex direction
+@mixin flex-direction($direction: row) {
+  @if $direction == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: reverse;
+    -moz-box-orient: horizontal;
+  } @else if $direction == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
+  } @else if $direction == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: reverse;
+    -moz-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+// Axis alignment
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+// Cross-Axis Alignment
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -moz-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+    
+//flex basis
+@mixin flex-basis($value: auto) {
+  -ms-flex-preferred-size: $value;
+  flex-basis: $value;
+}
+
+//flex wrap
+@mixin flex-wrap($value: nowrap) {
+  -webkit-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+    flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+    flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+//mixin for media queries
+@mixin breakpoints($device) {
+  @if($device == 'desktop-large') {
+    @media only screen and (max-width: 1366px) {
+      @content;
+    }
+  } @else if($device == 'desktop-small') {
+    @media only screen and (max-width: 1280px) {
+      @content;
+    } 
+  } @else if($device == 'ipad-pro') {
+    @media only screen and (max-width: 1024px) {
+      @content;
+    } 
+  } @else if($device == 'ipad-mini') {
+    @media only screen and (max-width: 995px) {
+      @content;
+    } 
+  } @else if($device == 'tablet') {
+    @media only screen and (max-width: 768px) {
+      @content;
+    } 
+  } @else if($device == 'mobile') {
+    @media only screen and (max-width: 540px) {
+      @content;
+    } 
+  } @else if($device == 'mobile-small') {
+    @media only screen and (max-width: 480px) {
+      @content;
+    } 
+  }
+}
+
+// mixin to give hover effect only on desktops
+@mixin  hover-effects() {
+  @media screen and (min-width: 768px) {
+    @content;
+    @include transition-effect();
+  }
+}
+
+//mixin for transition effects
+@mixin transition-effect() {
+  @content;
+  -webkit-transition: .4s ease-in; 
+  -o-transition: .4s ease-in;  
+  transition: .4s ease-in;
+}
+
+//for btn
+@mixin btn($bg-clr,$clr,$size) {
+  border: none;
+  border-radius: 5px;
+  background-color: $bg-clr;
+  color: $clr;
+  font-size: $size;
+  outline: none;
+  @content;
+}
+

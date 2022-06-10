@@ -1,0 +1,11 @@
+.update-btn {
+  @include btn(map-get($colors, btn-bg),map-get($colors, white), 18px) {
+    padding: 10px 25px;
+    text-transform: uppercase;
+  }
+  &:hover{
+    @include hover-effects() {
+      background-color: (map-get($colors, day-bg));
+    }
+  }
+}

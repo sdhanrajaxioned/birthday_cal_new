@@ -1,0 +1,100 @@
+main {
+  min-height: 100vh;
+  background-color: map-get($colors, background-clr);
+  
+  .wrapper {
+    .title {
+      padding-bottom: 30px;
+      font-size: 30px;
+      color: map-get($colors, title-clr);
+      text-align: center;
+    }
+  
+    .birthday-cal {
+      @include flexbox();
+  
+      .day {
+        flex-basis: 13.28%;
+        margin-right: 1%;
+  
+        &:last-child { margin-right: 0;}
+
+        h2 {
+          padding: 8px;
+          background-color: map-get($colors, day-bg);
+          color: map-get($colors, white);
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          text-align: right;
+        }
+
+        .birthDays {
+          @include flexbox();
+          flex-wrap: wrap;
+          min-height: 150px;
+          background-color: map-get($colors, white);
+          text-align: center;
+          @include justify-content(center);
+
+          span {
+            padding: 25px;
+            @include flexbox();
+            @include justify-content(center);
+            @include align-items(center);
+
+            flex-grow: 1;
+            flex: 1;
+
+            &.active {
+              max-height: 75px;
+            }
+          }
+        }
+      }
+    }
+
+    .form-container {
+      padding-top: 30px;
+
+      .birthdate-form {
+        @include flexbox();
+        @include justify-content(space-between);
+
+        .textarea-formgroup {
+          flex-basis: 58%;
+
+          .birth-dates-textarea{
+            width: 100%;
+            border-radius: 5px;
+            border-color: map-get($colors, border-clr);
+          }
+        }
+
+        @at-root
+        .right-content {
+          flex-basis: 40%;
+          
+          label { 
+            display: block;
+            color: map-get($colors, title-clr);
+            font-size: 18px;
+          }
+
+          .formgroup {
+            max-width: 220px;
+
+            @at-root
+            .year-field {
+              width: 100%;
+              padding: 10px 5px;
+              margin: 10px 0 20px;
+              border: 1px solid map-get($colors, border-clr);
+              border-radius: 5px;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
